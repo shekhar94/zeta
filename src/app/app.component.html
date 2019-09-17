@@ -1,20 +1,46 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+<div class="container fixed">
+    <div class="col-md-12">
+        <p class="text-center header"><b>Best Food App</b></p>
+    </div>
+    <div class="col-md-12 mb-20">
+        <b>FAVOURITES</b><br>
+        <span class="text-secondary">Enjoy what you have been ordering!</span>
+        <img class="pull-right" src="../assets/baseline-shopping_cart-24px.svg"/>
+        <span class="pull-right">{{totalItems}}</span>
+    </div>
+    
+    <div class="col-md-12 mb-20">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input class="form-control" [(ngModel)]="searchTerm" placeholder="Search" name="srch-term" id="srch-term" type="text">
+    </div>
+    </div>
+    <div class="col-md-12"><b>SELECT CATEGORIES</b></div>
+    <div class="col-md-12">
+        <div class="scrollMenu mb-20">
+            <a (click)="onSelectCategory(category, i)" href="#home" [ngClass]="{'selected': i === selected}" *ngFor="let category of categories; let i = index">
+            <img class="categoryImg" [src]="category.image"/>
+            {{category.name}}
+            </a>
+        </div>
+    </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div class="container-fluid body-content body">
+    <div class="card mb-20" style="width: 50rem;" *ngFor="let recipe of selectedRecipes | searchfilter: searchTerm; let j = index">
+            <img class="card-img-top" [src]="recipe.image" alt="Card image cap">
+            <div class="card-body">
+                <span class="card-title pull-left">{{recipe.name}}</span><br>
+            </div>
+            <div class="card-footer">
+                <div class="pull-left">
+                    &#8377;{{recipe.price}}
+                </div>
+                <button class="btn pull-right btn-success addBtn" (click)="onRemoveFromBag(recipe)">Remove From BAG</button>
+                <button class="btn pull-right btn-success addBtn" (click)="onAddToBag(recipe)">ADD TO BAG</button>
+            </div>
+    </div>
+</div>
+
 

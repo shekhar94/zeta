@@ -1,0 +1,55 @@
+.header {
+  background-color: green;
+  color: #fff;
+  margin-top: 2%;
+  padding: 10px;
+}
+
+div.scrollMenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+div.scrollMenu a {
+  display: inline-block;
+  color: grey;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.selected {
+  border-bottom: 2px solid green;
+}
+
+.categoryImg {
+  width: 50px;
+  height: 50px;
+  padding-right: 5px;
+}
+
+.addBtn {
+  margin-left: 50px;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+}
+
+.body {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  left: 0px;
+  right: 0px;
+  padding-top: 250px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.shoppingCart {
+    margin-left: 40%;
+}
